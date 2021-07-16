@@ -1,0 +1,14 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content-container {
+  height: calc(100vh - 140px);
+}
+
+@media (max-width: 600px) {
+  .page-content-container {
+    height: 100%;
+  }
+}

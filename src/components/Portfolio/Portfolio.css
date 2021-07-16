@@ -1,0 +1,12 @@
+.port-header {
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.port-work-container {
+  display: flex;
+
+  max-width: 800px;
+  max-height: 500px;
+  margin-left: 15px;
+}
