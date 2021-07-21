@@ -1,87 +1,90 @@
 import React, { useState } from "react";
-import { validateEmail } from "../../utils/helpers";
-import "./Contact.css";
+import {
+  Grid,
+  makeStyles,
+  createStyles,
+  TextField,
+  Button,
+} from "@material-ui/core";
+import { motion } from "framer-motion";
+import pageTransition from "../PageTransition";
 
-function ContactForm() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    gridContainer: {
+      padding: "15px",
+    },
+    textInput: {
+      marginTop: "25px",
+    },
+    buttonContainer: {
+      margin: "0",
+    },
+    submitButton: {
+      marginTop: "10px",
+      color: theme.colors.secondary,
+    },
+  })
+);
 
-  const [errorMessage, setErrorMessage] = useState("");
+const ContactForm = () => {
+  const classes = useStyles();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!errorMessage) {
-      setFormState({ [e.target.name]: e.target.value });
-      console.log("Form", formState);
-    }
-  };
+  const [emailInput, setEmailValue] = useState("");
+  const [nameInput, setNameValue] = useState("");
+  const [messageInput, setMessageValue] = useState("");
 
-  const handleChange = (e) => {
-    if (e.target.name === "email") {
-      const isValid = validateEmail(e.target.value);
-      if (!isValid) {
-        setErrorMessage("Your email is invalid.");
-      } else {
-        setErrorMessage("");
-      }
-    } else {
-      if (!e.target.value.length) {
-        setErrorMessage(`${e.target.name} is required.`);
-      } else {
-        setErrorMessage("");
-      }
-    }
-    if (!errorMessage) {
-      setFormState({ ...formState, [e.target.name]: e.target.value });
-    }
+  const handleSubmit = () => {
+    console.log("Submitted", emailInput);
+    setEmailValue("");
   };
 
   return (
-    <section>
-      <h1 data-testid="h1tag">Contact Me</h1>
-      <form id="contact-form" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            defaultValue={formState.name}
-            onBlur={handleChange}
-            name="name"
+    <motion.div initial="out" animate="in" exit="out" variants={pageTransition}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-evenly"
+        alignItems="center"
+        className={classes.gridContainer}
+      >
+        <Grid item xs={6} className={classes.textInput}>
+          <TextField
+            variant="outlined"
+            value={nameInput}
+            label="Name"
+            onChange={(e) => setNameValue(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email address:</label>
-          <input
-            type="email"
-            defaultValue={formState.email}
-            onBlur={handleChange}
-            name="email"
+        </Grid>
+        <Grid item xs={6} className={classes.textInput}>
+          <TextField
+            variant="outlined"
+            value={emailInput}
+            label="Email"
+            onChange={(e) => setEmailValue(e.target.value)}
           />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea
-            className="text-box"
-            name="message"
-            defaultValue={formState.message}
-            onBlur={handleChange}
-            rows="5"
+        </Grid>
+        <Grid item xs={6} className={classes.textInput}>
+          <TextField
+            variant="outlined"
+            value={messageInput}
+            label="Message"
+            onChange={(e) => setMessageValue(e.target.value)}
           />
-          {errorMessage && (
-            <div>
-              <p className="error-text">{errorMessage}</p>
-            </div>
-          )}
-        </div>
-        <button data-testid="button" type="submit">
-          Submit
-        </button>
-      </form>
-    </section>
+        </Grid>
+        <Grid item xs={6} className={classes.buttonContainer}>
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            size="large"
+            className={classes.submitButton}
+          >
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
+    </motion.div>
   );
-}
+};
 
 export default ContactForm;

@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import { AnimatePresence } from "framer-motion";
 import AboutPage from "./pages/AboutPage";
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -18,12 +19,14 @@ const App = () => {
           <Router>
             <Suspense fallback={<h1>Loading...</h1>}>
               <Navbar />
-              <Switch>
-                <Route exact path="/" component={AboutPage} />
-                <Route exact path="/contact" component={ContactPage} />
-                <Route exact path="/portfolio" component={PortfolioPage} />
-                <Route exact path="/resume" component={ResumePage} />
-              </Switch>
+              <AnimatePresence exitBeforeEnter>
+                <Switch>
+                  <Route exact path="/" component={AboutPage} />
+                  <Route exact path="/contact" component={ContactPage} />
+                  <Route exact path="/portfolio" component={PortfolioPage} />
+                  <Route exact path="/resume" component={ResumePage} />
+                </Switch>
+              </AnimatePresence>
             </Suspense>
           </Router>
         </div>

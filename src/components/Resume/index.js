@@ -1,8 +1,10 @@
+import { motion } from "framer-motion";
+import pageTransition from "../PageTransition";
 import React from "react";
 
 const MyResume = () => {
   return (
-    <div>
+    <motion.div initial="out" animate="in" exit="out" variants={pageTransition}>
       <div>
         <h1>What I know</h1>
       </div>
@@ -41,7 +43,7 @@ const MyResume = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

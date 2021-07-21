@@ -2,6 +2,7 @@ import React from "react";
 import Image from "../Image";
 import PortWorkImg from "../../assets/work-img/screenshot3.png";
 import PortProjectImg from "../../assets/work-img/2021-07-04 (2).png";
+
 import "./Portfolio.css";
 
 const Portfolio = () => {
