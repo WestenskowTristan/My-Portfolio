@@ -7,6 +7,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
+import pageVariants from "../PageVariants";
 import pageTransition from "../PageTransition";
 
 const useStyles = makeStyles((theme) =>
@@ -40,7 +41,13 @@ const ContactForm = () => {
   };
 
   return (
-    <motion.div initial="out" animate="in" exit="out" variants={pageTransition}>
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <Grid
         container
         direction="column"
@@ -77,7 +84,9 @@ const ContactForm = () => {
             variant="contained"
             onClick={handleSubmit}
             size="large"
-            className={classes.submitButton}
+            classes={{
+              root: classes.submitButton,
+            }}
           >
             Submit
           </Button>

@@ -2,7 +2,7 @@
   background-color: #353535;
   height: 125px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -22,7 +22,7 @@
   top: 0;
   left: -100%;
   transition: 850ms;
-  z-index: 10;
+  z-index: 9;
 }
 
 .nav-menu.active {
@@ -71,4 +71,12 @@
 
 .item-span {
   margin-left: 16px;
+}
+
+.logo-img {
+  z-index: 9;
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+  padding: 15px;
 }

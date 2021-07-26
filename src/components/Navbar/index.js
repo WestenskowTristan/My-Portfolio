@@ -4,6 +4,7 @@ import * as CgIcons from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { NavbarData } from "../NavbarData";
 import { IconContext } from "react-icons";
+import LogoImage from "../IconLink";
 import "./Navbar.css";
 
 function Navbar() {
@@ -18,6 +19,9 @@ function Navbar() {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          <div className="logo-img">
+            <LogoImage />
+          </div>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>

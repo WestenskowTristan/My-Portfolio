@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, createStyles, Grid } from "@material-ui/core";
 import AboutImage from "../../assets/IMG_0554.JPG";
 import pageTransition from "../PageTransition";
+import pageVariants from "../PageVariants";
 import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) =>
@@ -67,7 +68,13 @@ const useStyles = makeStyles((theme) =>
 const About = () => {
   const classes = useStyles();
   return (
-    <motion.div initial="out" animate="in" exit="out" variants={pageTransition}>
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <Grid container>
         <Grid
           item

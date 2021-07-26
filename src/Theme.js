@@ -21,6 +21,11 @@ const theme = createTheme({
     quarternary: "#d9d9d9",
     quinary: "#284b63",
   },
+  typography: {
+    p: {
+      fontFamily: "'Bona Nova', serif",
+    },
+  },
 });
 
 export default theme;
