@@ -8,9 +8,7 @@ import {
   CardContent,
   CardMedia,
   Button,
-  Typography,
   Grid,
-  Link,
 } from "@material-ui/core";
 import pageTransition from "../PageTransition";
 import pageVariants from "../PageVariants";
@@ -53,9 +51,17 @@ const useStyles = makeStyles((theme) =>
         transition: "0.3s",
         transform: "translate(5px, -5px)",
       },
-      cardInfo: {
-        fontFamily: theme.fonts.secondary,
-      },
+    },
+    cardHeader: {
+      color: theme.colors.secondary,
+      ...theme.fonts.secondary,
+      fontWeight: "bold",
+      fontSize: "25px",
+      marginBottom: "3px",
+    },
+    CardContent: {
+      ...theme.fonts.tertiary,
+      fontSize: "15px",
     },
 
     linkButton: {
@@ -107,15 +113,13 @@ const Portfolio = () => {
               title="SecondProject"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Savannah's Sweets
-              </Typography>
-              <Typography variant="body1" color="textSecondary" component="p">
+              <div className={classes.cardHeader}>Savannah's Sweets</div>
+              <div className={classes.CardContent}>
                 This project was my final project for my bootcamp, my team and I
                 made our client a website for her bakery business. My role in
                 this project was to handle user authenitcation using web tokens.
                 Also use graphql to let users make an account.
-              </Typography>
+              </div>
             </CardContent>
           </CardActionArea>
           <a
@@ -141,21 +145,12 @@ const Portfolio = () => {
               title="FirstProject"
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                A Night In
-              </Typography>
-              <Typography
-                variant="body1"
-                color="textSecondary"
-                component="p"
-                classes={{
-                  body1: classes.cardInfo,
-                }}
-              >
+              <div className={classes.cardHeader}>A Night In</div>
+              <div className={classes.CardContent}>
                 This was my very first project for my bootcamp, my team and I
                 made a webpage where you can search for a certian movie to watch
                 and also search for a resturant near you to get some food from.
-              </Typography>
+              </div>
             </CardContent>
           </CardActionArea>
           <a

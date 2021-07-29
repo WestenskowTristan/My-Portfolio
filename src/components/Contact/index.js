@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     gridContainer: {
       padding: "15px",
+      overflow: "visible",
     },
     textInput: {
       marginTop: "25px",

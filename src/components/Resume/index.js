@@ -6,12 +6,12 @@ import {
   Grid,
   makeStyles,
   createStyles,
-  List,
-  ListItemText,
-  ListItem,
-  MenuItem,
-  Menu,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
 } from "@material-ui/core";
+import { ExpandMore } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -19,80 +19,31 @@ const useStyles = makeStyles((theme) =>
       paddingBottom: "70px",
     },
     root: {
-      width: "100%",
-      maxWidth: 360,
-      backgroundColor: "#fafafa",
-      margin: "20px",
-      marginTop: "250px",
-      textAlign: "center",
-      border: `5px solid ${theme.colors.quinary}`,
-      cursor: "pointer",
-      transition: "0.3s",
-      transform: "translate(0px, 0px)",
-      "&:hover": {
-        boxShadow: `-13px 13px 2.5px 0px ${theme.colors.quarternary}`,
-        transition: "0.3s",
-        transform: "translate(5px, -5px)",
-      },
+      margin: "25px",
     },
-
-    listItemText: {
-      textAlign: "center",
+    content: {
+      justifyContent: "center",
+    },
+    accordian: {
+      marginTop: "15px",
+      border: `2px solid ${theme.colors.primary}`,
+      overflow: "hidden",
+    },
+    accordianText: {
+      fontSize: "25px",
+      ...theme.fonts.secondary,
+      color: theme.colors.quinary,
+    },
+    accordianContent: {
+      fontSize: "15px",
+      fontWeight: "bold",
+      ...theme.fonts.tertiary,
     },
   })
 );
 
-const optionOne = [
-  "HTML",
-  "Css",
-  "React",
-  "Material Ui",
-  "JavaScript",
-  "BootStrap",
-  "Handlebars",
-  "jQuery",
-  "Responsive Design",
-];
-const optionTwo = [
-  "API's",
-  "Express",
-  "Node",
-  "MongoDb",
-  "MongoAtlas",
-  "SQL",
-  "Mongoose",
-  "GraphQl",
-  "REST",
-];
-
 const MyResume = () => {
   const classes = useStyles();
-  const [anchorOne, setAnchorOne] = React.useState(null);
-  const [anchorTwo, setAnchorTwo] = React.useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  const handleFirstClickListItem = (event) => {
-    setAnchorOne(event.currentTarget);
-  };
-
-  const handleSecondClickListItem = (event) => {
-    setAnchorTwo(event.currentTarget);
-  };
-
-  const handleFirstMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setAnchorOne(null);
-  };
-
-  const handleSecondMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setAnchorTwo(null);
-  };
-
-  const handleClose = () => {
-    setAnchorOne(null);
-    setAnchorTwo(null);
-  };
 
   return (
     <motion.div
@@ -110,75 +61,40 @@ const MyResume = () => {
         alignItems="center"
         className={classes.pageContainer}
       >
-        {" "}
-        <Grid className={classes.root}>
-          <List component="nav" aria-label="Device settings">
-            <ListItem
-              button
-              aria-haspopup="true"
-              aria-controls="lock-menu"
-              aria-label="Frontend Knowledge"
-              onClick={handleFirstClickListItem}
-              className={classes.listItemText}
+        <div className={classes.root}>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              classes={{ content: classes.content, root: classes.accordian }}
             >
-              <ListItemText
-                primary="Frontend Knowledge"
-                secondary={"Show all"}
-              />
-            </ListItem>
-          </List>
-          <Menu
-            id="lock-menu"
-            anchorEl={anchorOne}
-            keepMounted
-            open={Boolean(anchorOne)}
-            onClose={handleClose}
-          >
-            {optionOne.map((optionOne, index) => (
-              <MenuItem
-                key={optionOne}
-                selected={index === selectedIndex}
-                onClick={(event) => handleFirstMenuItemClick(event, index)}
-              >
-                {optionOne}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Grid>{" "}
-        <Grid className={classes.root}>
-          <List component="nav" aria-label="Device settings">
-            <ListItem
-              button
-              aria-haspopup="true"
-              aria-controls="lock-menu"
-              aria-label="Backend Knowledge"
-              onClick={handleSecondClickListItem}
-              className={classes.listItemText}
+              <div className={classes.accordianText}>Frontend knowledge</div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={classes.accordianContent}>
+                HTML, Css, React, Material Ui, JavaScript, BootStrap,
+                Handlebars, jQuery, Responsive Design.
+              </div>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMore />}
+              aria-controls="panel2a-content"
+              id="panel2a-header"
+              classes={{ content: classes.content, root: classes.accordian }}
             >
-              <ListItemText
-                primary="Backend Knowledge"
-                secondary={"Show all"}
-              />
-            </ListItem>
-          </List>
-          <Menu
-            id="lock-menu"
-            anchorEl={anchorTwo}
-            keepMounted
-            open={Boolean(anchorTwo)}
-            onClose={handleClose}
-          >
-            {optionTwo.map((option, index) => (
-              <MenuItem
-                key={option}
-                selected={index === selectedIndex}
-                onClick={(event) => handleSecondMenuItemClick(event, index)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Grid>
+              <div className={classes.accordianText}>Backend knowledge</div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className={classes.accordianContent}>
+                API's, Express, Node, MongoDb, MongoAtlas, SQL, Mongoose,
+                GraphQl, REST-API's.
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        </div>
       </Grid>
     </motion.div>
   );

@@ -3,14 +3,12 @@ import Image from "../Image";
 import linkedinImage from "../../assets/linkedin.png";
 import gitHubImage from "../../assets/GitHub-Mark.png";
 import stackImage from "../../assets/overflow-logo.png";
+import resumeImage from "../../assets/resumeIcon2.jpg";
 import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div
-      className="footer-container"
-      
-    >
+    <div className="footer-container">
       <Image
         height="50px"
         width="50px"
@@ -31,6 +29,13 @@ const Footer = () => {
         src={stackImage}
         link="https://stackoverflow.com/users/story/16218578?newreg=f7cfa2c544e543ac94a8e5acc8cd9a0e&_=1"
         alt="stack overflow logo link"
+      />
+      <Image
+        height="50px"
+        width="50px"
+        src={resumeImage}
+        link="https://docs.google.com/document/d/1uiSJtRoc3ssEyVYeyQqegc-D1hk3xHMADSv23g3d9QQ/edit?usp=sharing"
+        alt="Resume logo link"
       />
     </div>
   );

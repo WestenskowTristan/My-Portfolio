@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Work, Description, Send } from "@material-ui/icons";
+import { Home, Work, School, Send } from "@material-ui/icons";
 
 export const NavbarData = [
   {
@@ -15,9 +15,9 @@ export const NavbarData = [
     className: "nav-text",
   },
   {
-    title: "Resume",
+    title: "My Skills",
     path: "/resume",
-    icon: <Description />,
+    icon: <School />,
     className: "nav-text",
   },
   {

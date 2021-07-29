@@ -1,7 +1,5 @@
 import Image from "../../assets/bootcamp-cert.png";
 import { makeStyles, createStyles } from "@material-ui/core";
-import theme from "../../Theme";
-import { CallMissedSharp } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
