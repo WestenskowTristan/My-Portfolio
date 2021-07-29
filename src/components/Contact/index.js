@@ -1,30 +1,39 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  makeStyles,
-  createStyles,
-  TextField,
-  Button,
-} from "@material-ui/core";
+import { Grid, makeStyles, createStyles, Button } from "@material-ui/core";
 import { motion } from "framer-motion";
 import pageVariants from "../PageVariants";
 import pageTransition from "../PageTransition";
+import emailjs from "emailjs-com";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    gridContainer: {
-      padding: "15px",
-      overflow: "visible",
+    container: {
+      borderRadius: "5px",
+      backgroundColor: "#f2f2f2",
+      padding: "20px",
+      display: "flex",
+      justifyContent: "center",
     },
-    textInput: {
-      marginTop: "25px",
+    sendButton: {
+      width: "100%",
+      height: "40px",
+      border: `2px solid ${theme.colors.quinary}`,
+      color: theme.colors.quinary,
+      padding: "14px 20px",
+      margin: "8px 0",
+      marginTop: "35px",
+      borderRadius: "4px",
     },
-    buttonContainer: {
-      margin: "0",
-    },
-    submitButton: {
-      marginTop: "10px",
-      color: theme.colors.secondary,
+
+    textField: {
+      width: "100%",
+      padding: "12px 20px",
+      margin: "8px 0",
+      marginTop: "35px",
+      border: `4px solid ${theme.colors.secondary}`,
+      borderRadius: "4px",
+      boxSizing: "border-box",
+      justifyContent: "center",
     },
   })
 );
@@ -32,13 +41,25 @@ const useStyles = makeStyles((theme) =>
 const ContactForm = () => {
   const classes = useStyles();
 
-  const [emailInput, setEmailValue] = useState("");
-  const [nameInput, setNameValue] = useState("");
-  const [messageInput, setMessageValue] = useState("");
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = () => {
-    console.log("Submitted", emailInput);
-    setEmailValue("");
+    emailjs
+      .sendForm(
+        "gmail",
+        "template_1j5wdec",
+        e.target,
+        "user_1AV0TxghhUlLl0XtXFRJF"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
   };
 
   return (
@@ -49,50 +70,39 @@ const ContactForm = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-evenly"
-        alignItems="center"
-        className={classes.gridContainer}
-      >
-        <Grid item xs={6} className={classes.textInput}>
-          <TextField
-            variant="outlined"
-            value={nameInput}
-            label="Name"
-            onChange={(e) => setNameValue(e.target.value)}
+      <div className={classes.container}>
+        <form className={classes.form} onSubmit={sendEmail}>
+          <input type="hidden" name="contact_number" />
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            className={classes.textField}
           />
-        </Grid>
-        <Grid item xs={6} className={classes.textInput}>
-          <TextField
-            variant="outlined"
-            value={emailInput}
-            label="Email"
-            onChange={(e) => setEmailValue(e.target.value)}
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className={classes.textField}
           />
-        </Grid>
-        <Grid item xs={6} className={classes.textInput}>
-          <TextField
-            variant="outlined"
-            value={messageInput}
-            label="Message"
-            onChange={(e) => setMessageValue(e.target.value)}
+
+          <input
+            type="text"
+            placeholder="Your Message"
+            name="message"
+            className={classes.textField}
           />
-        </Grid>
-        <Grid item xs={6} className={classes.buttonContainer}>
           <Button
+            type="submit"
             variant="contained"
-            onClick={handleSubmit}
-            size="large"
-            classes={{
-              root: classes.submitButton,
-            }}
+            className={classes.sendButton}
           >
-            Submit
+            Send
           </Button>
-        </Grid>
-      </Grid>
+        </form>
+      </div>
     </motion.div>
   );
 };
