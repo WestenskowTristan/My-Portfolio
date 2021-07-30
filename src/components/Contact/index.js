@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) =>
     },
     sendButton: {
       width: "100%",
-      height: "40px",
+
       border: `2px solid ${theme.colors.quinary}`,
       color: theme.colors.quinary,
       padding: "14px 20px",
