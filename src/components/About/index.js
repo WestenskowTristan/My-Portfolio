@@ -104,9 +104,8 @@ const About = () => {
             know about full-stack web development, because that is what I like
             to do! Building websites isn't only a career choice for me, it's
             what I am passionate about. Everyday I strive to expande my
-            knowledge about both front-end and back-end. I have graduated from
-            the University of Utah coding bootcamp and have made a lot of
-            projects both during and after the program. Take a look around my
+            knowledge about both front-end and back-end. I am a graduate from
+            the University of Utah coding bootcamp. Take a look around my
             webpage to see everything.
           </p>
         </Grid>

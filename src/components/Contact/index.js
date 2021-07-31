@@ -9,14 +9,12 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     container: {
       borderRadius: "5px",
-      backgroundColor: "#f2f2f2",
       padding: "20px",
       display: "flex",
       justifyContent: "center",
     },
     sendButton: {
       width: "100%",
-
       border: `2px solid ${theme.colors.quinary}`,
       color: theme.colors.quinary,
       padding: "14px 20px",
