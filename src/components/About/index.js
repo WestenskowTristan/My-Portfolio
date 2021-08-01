@@ -100,13 +100,14 @@ const About = () => {
           <h2 className={classes.header2}>My name is Tristan Westenskow.</h2>
           <p className={classes.aboutInfo}>
             Welcome, I am honored to have you come take a gander at my
-            portfolio! I am very eager in learning everything I can possibly
-            know about full-stack web development, because that is what I like
-            to do! Building websites isn't only a career choice for me, it's
-            what I am passionate about. Everyday I strive to expande my
-            knowledge about both front-end and back-end. I am a graduate from
-            the University of Utah coding bootcamp. Take a look around my
-            webpage to see everything.
+            portfolio!, I have graduated from the University of Utah coding
+            bootcamp and now I am looking for my first full-time job. I have and
+            am currently doing projects for clients so I can learn as much as I
+            can. Everyday I strive to expande my knowledge about both front-end
+            and back-end, I am always open to challenges and constructive
+            feedback. I am a team player who can dedicate all my skills and
+            talents to develop high-quality and unique products. Thanks for
+            taking a look at my webpage!
           </p>
         </Grid>
       </Grid>

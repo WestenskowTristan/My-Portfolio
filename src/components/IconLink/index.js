@@ -12,8 +12,9 @@ const useStyles = makeStyles((theme) =>
         transition: "0.3s",
         transform: "translate(5px, -5px)",
       },
-      borderBottomLeftRadius: "150%",
-      borderBottomRightRadius: "150%",
+
+      borderBottomLeftRadius: "50px",
+      borderBottomRightRadius: "50px",
     },
   })
 );
