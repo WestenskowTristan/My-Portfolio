@@ -12,8 +12,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ExpandMore } from "@material-ui/icons";
-import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
+import { Document, Page, pdfjs } from "react-pdf";
 import resumeImage from "../../assets/work-img/tristan.pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
