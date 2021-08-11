@@ -14,7 +14,7 @@ import {
 import { ExpandMore } from "@material-ui/icons";
 import { Document, Page, pdfjs } from "react-pdf";
 import resumeImage from "../../assets/work-img/tristan.pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const useStyles = makeStyles((theme) =>
   createStyles({
