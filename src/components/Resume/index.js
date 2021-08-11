@@ -1,7 +1,7 @@
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import pageTransition from "../PageTransition";
 import pageVariants from "../PageVariants";
-import React from "react";
 import {
   Grid,
   makeStyles,
@@ -12,6 +12,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ExpandMore } from "@material-ui/icons";
+import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
+import resumeImage from "../../assets/work-img/tristan.pdf";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -39,11 +41,28 @@ const useStyles = makeStyles((theme) =>
       fontWeight: "bold",
       ...theme.fonts.tertiary,
     },
+    hiddenScrollBars: {
+      marginTop: "15px",
+      overflow: "unset",
+      border: `2px solid ${theme.colors.primary}`,
+      "& .react-pdf__Page": {
+        overflow: "unset",
+      },
+      "& .react-pdf__Page__textContent": {
+        "& span": {
+          overflow: "unset",
+        },
+      },
+      "& .react-pdf__Page__annotations": {
+        height: "0px",
+      },
+    },
   })
 );
 
 const MyResume = () => {
   const classes = useStyles();
+  const [pageNumber, setPageNumber] = useState(1);
 
   return (
     <motion.div
@@ -94,6 +113,9 @@ const MyResume = () => {
               </div>
             </AccordionDetails>
           </Accordion>
+          <Document file={resumeImage} className={classes.hiddenScrollBars}>
+            <Page pageNumber={pageNumber} />
+          </Document>
         </div>
       </Grid>
     </motion.div>
