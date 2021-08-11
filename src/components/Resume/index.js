@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) =>
       border: `2px solid ${theme.colors.primary}`,
       "& .react-pdf__Page": {
         overflow: "unset",
+        overflowX: "scroll",
       },
       "& .react-pdf__Page__textContent": {
         "& span": {
